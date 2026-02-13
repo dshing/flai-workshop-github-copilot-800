@@ -36,27 +36,34 @@ const Teams = () => {
     fetchTeams();
   }, []);
 
-  if (loading) return <div className="container mt-4"><div className="alert alert-info">Loading teams...</div></div>;
-  if (error) return <div className="container mt-4"><div className="alert alert-danger">Error: {error}</div></div>;
+  if (loading) return <div className="container mt-4"><div className="page-container"><div className="alert alert-info">Loading teams...</div></div></div>;
+  if (error) return <div className="container mt-4"><div className="page-container"><div className="alert alert-danger">Error: {error}</div></div></div>;
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Teams</h2>
-      <div className="row">
-        {teams.map((team) => (
-          <div key={team.id} className="col-md-6 mb-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">{team.name}</h5>
-                <p className="card-text">{team.description}</p>
-                <div className="d-flex justify-content-between">
-                  <span className="badge bg-primary">Points: {team.total_points}</span>
-                  <span className="badge bg-secondary">Members: {team.member_count}</span>
+      <div className="page-container">
+        <h2 className="page-header">👥 Teams</h2>
+        <div className="row g-4">
+          {teams.map((team) => (
+            <div key={team.id} className="col-md-6">
+              <div className="card h-100">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-start mb-3">
+                    <h4 className="card-title mb-0">{team.name}</h4>
+                  </div>
+                  <p className="card-text text-muted">{team.description}</p>
+                  <hr />
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <div>
+                      <span className="badge bg-primary me-2">💯 {team.total_points} Points</span>
+                      <span className="badge bg-secondary">👤 {team.member_count} Members</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

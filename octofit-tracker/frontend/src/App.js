@@ -74,37 +74,58 @@ function App() {
 
 function Home() {
   return (
-    <div className="container mt-5">
-      <div className="jumbotron text-center">
-        <h1 className="display-4">Welcome to OctoFit Tracker! 🏋️‍♀️</h1>
-        <p className="lead">Track your fitness journey with Marvel and DC superheroes!</p>
-        <hr className="my-4" />
-        <p>Browse the navigation menu to explore teams, users, activities, leaderboard, and workout plans.</p>
-        <div className="row mt-5">
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">🏆 Leaderboard</h5>
-                <p className="card-text">See who's leading the fitness challenge!</p>
-                <Link to="/leaderboard" className="btn btn-primary">View Rankings</Link>
+    <div>
+      <div className="hero-section text-center">
+        <div className="container">
+          <h1 className="display-3">Welcome to OctoFit Tracker! 🏋️‍♀️</h1>
+          <p className="lead">Track your fitness journey with Marvel and DC superheroes!</p>
+          <p className="mt-3">Join the ultimate fitness challenge where heroes compete for glory!</p>
+        </div>
+      </div>
+      <div className="container">
+        <div className="page-container">
+          <h2 className="page-header text-center mb-4">Get Started</h2>
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="card text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div className="mb-3">
+                    <span style={{fontSize: '3rem'}}>🏆</span>
+                  </div>
+                  <h5 className="card-title">Leaderboard</h5>
+                  <p className="card-text">See who's leading the fitness challenge and compete for the top spot!</p>
+                  <div className="mt-auto">
+                    <Link to="/leaderboard" className="btn btn-primary">View Rankings</Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">👥 Teams</h5>
-                <p className="card-text">Marvel vs DC - Who will win?</p>
-                <Link to="/teams" className="btn btn-primary">View Teams</Link>
+            <div className="col-md-4">
+              <div className="card text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div className="mb-3">
+                    <span style={{fontSize: '3rem'}}>👥</span>
+                  </div>
+                  <h5 className="card-title">Teams</h5>
+                  <p className="card-text">Marvel vs DC - Join a team and contribute to their victory!</p>
+                  <div className="mt-auto">
+                    <Link to="/teams" className="btn btn-primary">View Teams</Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">💪 Workouts</h5>
-                <p className="card-text">Superhero-inspired workout routines!</p>
-                <Link to="/workouts" className="btn btn-primary">Browse Workouts</Link>
+            <div className="col-md-4">
+              <div className="card text-center h-100">
+                <div className="card-body d-flex flex-column">
+                  <div className="mb-3">
+                    <span style={{fontSize: '3rem'}}>💪</span>
+                  </div>
+                  <h5 className="card-title">Workouts</h5>
+                  <p className="card-text">Discover superhero-inspired workout routines tailored to your level!</p>
+                  <div className="mt-auto">
+                    <Link to="/workouts" className="btn btn-primary">Browse Workouts</Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

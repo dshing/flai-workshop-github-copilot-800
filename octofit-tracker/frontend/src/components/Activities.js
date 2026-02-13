@@ -36,39 +36,42 @@ const Activities = () => {
     fetchActivities();
   }, []);
 
-  if (loading) return <div className="container mt-4"><div className="alert alert-info">Loading activities...</div></div>;
-  if (error) return <div className="container mt-4"><div className="alert alert-danger">Error: {error}</div></div>;
+  if (loading) return <div className="container mt-4"><div className="page-container"><div className="alert alert-info">Loading activities...</div></div></div>;
+  if (error) return <div className="container mt-4"><div className="page-container"><div className="alert alert-danger">Error: {error}</div></div></div>;
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Activities</h2>
-      <div className="table-responsive">
-        <table className="table table-striped table-hover">
-          <thead className="table-dark">
-            <tr>
-              <th>User</th>
-              <th>Activity Type</th>
-              <th>Duration (min)</th>
-              <th>Distance (km)</th>
-              <th>Calories</th>
-              <th>Points</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {activities.slice(0, 20).map((activity) => (
-              <tr key={activity.id}>
-                <td>{activity.user_name}</td>
-                <td><span className="badge bg-primary">{activity.activity_type}</span></td>
-                <td>{activity.duration}</td>
-                <td>{activity.distance ? activity.distance.toFixed(2) : '-'}</td>
-                <td>{activity.calories}</td>
-                <td><span className="badge bg-success">{activity.points}</span></td>
-                <td>{new Date(activity.date).toLocaleDateString()}</td>
+      <div className="page-container">
+        <h2 className="page-header">🏃 Recent Activities</h2>
+        <p className="text-muted mb-4">Showing the latest 20 activities</p>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>User</th>
+                <th>Activity Type</th>
+                <th>Duration (min)</th>
+                <th>Distance (km)</th>
+                <th>Calories Burned</th>
+                <th>Points Earned</th>
+                <th>Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {activities.slice(0, 20).map((activity) => (
+                <tr key={activity.id}>
+                  <td><strong>{activity.user_name}</strong></td>
+                  <td><span className="badge bg-primary">{activity.activity_type}</span></td>
+                  <td>{activity.duration}</td>
+                  <td>{activity.distance ? activity.distance.toFixed(2) : '-'}</td>
+                  <td>{activity.calories}</td>
+                  <td><span className="badge bg-success">🏅 {activity.points}</span></td>
+                  <td><small>{new Date(activity.date).toLocaleDateString()}</small></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

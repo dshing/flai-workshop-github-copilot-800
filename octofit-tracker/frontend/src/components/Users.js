@@ -36,33 +36,37 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  if (loading) return <div className="container mt-4"><div className="alert alert-info">Loading users...</div></div>;
-  if (error) return <div className="container mt-4"><div className="alert alert-danger">Error: {error}</div></div>;
+  if (loading) return <div className="container mt-4"><div className="page-container"><div className="alert alert-info">Loading users...</div></div></div>;
+  if (error) return <div className="container mt-4"><div className="page-container"><div className="alert alert-danger">Error: {error}</div></div></div>;
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Users</h2>
-      <div className="table-responsive">
-        <table className="table table-striped table-hover">
-          <thead className="table-dark">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Team</th>
-              <th>Total Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td><span className="badge bg-info">{user.team}</span></td>
-                <td><span className="badge bg-success">{user.total_points}</span></td>
+      <div className="page-container">
+        <h2 className="page-header">👤 Users</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Team</th>
+                <th>Total Points</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={user.id}>
+                  <td><strong>{index + 1}</strong></td>
+                  <td>{user.name}</td>
+                  <td><small>{user.email}</small></td>
+                  <td><span className={`badge ${user.team === 'Team Marvel' ? 'bg-danger' : 'bg-primary'}`}>{user.team}</span></td>
+                  <td><span className="badge bg-success">💯 {user.total_points}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
